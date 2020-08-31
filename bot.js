@@ -36,4 +36,8 @@ client.on('messageDelete', message => {
     }
 });
 
+client.on('guildCreate', async guild => {
+    await guild.channels.fetch(true);
+});
+
 client.login(process.env.TOKEN);
