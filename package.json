@@ -1,0 +1,19 @@
+{
+  "name": "ghostpingrevenge",
+  "version": "1.0.0",
+  "description": "Just a simple bot that gets revenge on people who ghost ping.",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Starman",
+  "license": "ISC",
+  "dependencies": {
+    "bufferutil": "^4.0.1",
+    "discord.js-light": "^3.2.6",
+    "dotenv": "^8.2.0",
+    "erlpack": "github:discordapp/erlpack",
+    "utf-8-validate": "^5.0.2",
+    "zlib-sync": "^0.1.7"
+  }
+}
