@@ -15,6 +15,7 @@ const client = new Client({
 });
 
 client.on('ready', () => {
+    client.user.setActivity('for ghostpings', { type: 'WATCHING' }).catch(() => { });
     return console.log("I'm ready to get revenge on those stinky ghostpingers!");
 });
 
