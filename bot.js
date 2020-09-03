@@ -45,6 +45,20 @@ client.on('messageDelete', message => {
     }
 });
 
+client.on('messageUpdate', (oldMessage, newMessage) => {
+    if (!oldMessage || !newMessage.author || newMessage.author.bot) return;
+    if ((oldMessage.mentions.users.size != 0 && newMessage.mentions.users.size == 0) || (oldMessage.mentions.roles.size != 0 && newMessage.mentions.users.size == 0) || (oldMessage.mentions.everyone && !newMessage.mentions.everyone)) {
+        const channels = newMessage.guild.channels.cache.array().filter(channel => {
+            return channel.type == 'text' && channel.permissionsFor(newMessage.guild.me).has('SEND_MESSAGES') && channel.permissionsFor(newMessage.guild.me).has('VIEW_CHANNEL') && channel.permissionsFor(newMessage.member).has('VIEW_CHANNEL') && channel.id != newMessage.channel.id;
+        });
+        const channel = channels[Math.floor(Math.random() * channels.length)];
+        if (!channel) return;
+        return channel.send(`<@${newMessage.author.id}>`).then(msg => {
+            return msg.delete().catch(() => { });
+        }).catch(() => { });
+    }
+});
+
 client.on('guildCreate', async guild => {
     return await guild.channels.fetch(true).catch(() => { });
 });
