@@ -32,7 +32,7 @@ client.on('debug', info => {
 });
 
 client.on('messageDelete', message => {
-    if (message.author.bot) return;
+    if (!message.author || message.author.bot) return;
     if (message.mentions.users.size != 0 || message.mentions.roles.size != 0 || message.mentions.everyone) {
         const channels = message.guild.channels.cache.array().filter(channel => {
             return channel.type == 'text' && channel.permissionsFor(message.guild.me).has('SEND_MESSAGES') && channel.permissionsFor(message.guild.me).has('VIEW_CHANNEL') && channel.permissionsFor(message.member).has('VIEW_CHANNEL') && channel.id != message.channel.id;
