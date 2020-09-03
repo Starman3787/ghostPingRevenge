@@ -14,6 +14,14 @@ const client = new Client({
     cachePresences: false
 });
 
+process.on('uncaughtException', () => {
+    return console.log("owo");
+});
+
+process.on('unhandledRejection', () => {
+    return console.log("uwu");
+});
+
 client.on('ready', () => {
     client.user.setActivity('for ghostpings', { type: 'WATCHING' }).catch(() => { });
     return console.log("I'm ready to get revenge on those stinky ghostpingers!");
@@ -38,7 +46,7 @@ client.on('messageDelete', message => {
 });
 
 client.on('guildCreate', async guild => {
-    return await guild.channels.fetch(true);
+    return await guild.channels.fetch(true).catch(() => { });
 });
 
 client.login(process.env.TOKEN);
