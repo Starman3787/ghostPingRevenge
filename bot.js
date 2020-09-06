@@ -11,7 +11,8 @@ const client = new Client({
     cacheOverwrites: true,
     cacheRoles: true,
     cacheEmojis: false,
-    cachePresences: false
+    cachePresences: false,
+    messageCacheMaxSize: 5
 });
 
 process.on('uncaughtException', () => {
