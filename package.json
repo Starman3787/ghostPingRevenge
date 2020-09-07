@@ -8,7 +8,7 @@
     "start": "node bot.js"
   },
   "author": "Starman",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "bufferutil": "^4.0.1",
     "discord.js-light": "^3.2.6",
